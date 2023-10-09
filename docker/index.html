@@ -1,55 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Flems</title>
-    <meta charset="utf8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<style>
-html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-}
-body {
-    display: block;
-    min-height: 100%;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-}
-</style>
-</head>
-<body>
-<script src="/flems.js" type="text/javascript" charset="utf-8"></script>
-<script>
-Flems(document.body, {
-    middle          : 50,
-    selected        : '.js',
-    color           : 'rgb(38,50,56)',
-    theme           : 'material', // and 'none' or 'default'
-    resizeable      : true,
-    editable        : true,
-    toolbar         : true,
-    fileTabs        : true,
-    linkTabs        : true,
-    shareButton     : true,
-    reloadButton    : true,
-    console         : true,
-    autoReload      : true,
-    autoReloadDelay : 400,
-    autoHeight      : false,
-    files: [
-        {
-            name: '.html'
-        },
-        {
-            name: '.js'
-        },
-        {
-            name: '.css'
+<h1>
+  This is Flems in Flems
+</h1>
+<div id="flems">
+</div>
+<p>
+  Flems is easily embedded in documentation etc...
+</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+<script> 
+    let state = {
+        toolbar         : true,
+        files: [{
+            name: 'app.js',
+            content: 'm.render(\n\tdocument.body,\n\tm("h1", "Hello world")\n)'
+        }],
+        links: [{
+            name: 'mithril',
+            type: 'js',
+            url: 'https://unpkg.com/mithril'
+        }]
+    };
+    window.Flems(flems, state)
+    
+    window.onkeydown = (e) => {
+      if (e.altKey) {
+        if (e.key == "x") {
+          const x = state
+          const updated = { ...state, files: _.map(state.files, file => _.omit(file, 'doc')) };
+          const jsonEnc = btoa(JSON.stringify(updated))
+          window.location.hash = jsonEnc;
         }
-   ]
-})
+      }
+    }
 </script>
-</body>
-</html>
