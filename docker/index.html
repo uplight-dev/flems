@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flems</title>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<style>
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+body {
+    display: block;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+</style>
+</head>
+<body>
+<script src="/flems.js" type="text/javascript" charset="utf-8"></script>
+<script>
+Flems(document.body, {
+    middle          : 50,
+    selected        : '.js',
+    color           : 'rgb(38,50,56)',
+    theme           : 'material', // and 'none' or 'default'
+    resizeable      : true,
+    editable        : true,
+    toolbar         : true,
+    fileTabs        : true,
+    linkTabs        : true,
+    shareButton     : true,
+    reloadButton    : true,
+    console         : true,
+    autoReload      : true,
+    autoReloadDelay : 400,
+    autoHeight      : false,
+    files: [
+        {
+            name: '.html'
+        },
+        {
+            name: '.js'
+        },
+        {
+            name: '.css'
+        }
+   ]
+})
+</script>
+</body>
+</html>
